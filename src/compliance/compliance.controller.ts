@@ -29,7 +29,7 @@ export class ComplianceController {
       ],
       {
         storage: diskStorage({
-          destination: './uploads', // Make sure this folder exists
+          destination: './uploads',
           filename: (req, file, cb) => {
             const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
             const ext = extname(file.originalname);

@@ -1,4 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Project } from '../project/project.entity';
+import { OneToMany } from 'typeorm/decorator/relations/OneToMany';
 
 @Entity()
 export class User {

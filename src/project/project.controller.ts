@@ -5,14 +5,15 @@ import {
   Req,
   UseGuards,
 } from '@nestjs/common';
+
 import { ProjectService } from './project.service';
-import { AuthGuard } from '@nestjs/passport'; // if using JWT
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('projects')
 export class ProjectController {
   constructor(private readonly projectService: ProjectService) {}
 
-  @UseGuards(AuthGuard('jwt')) // assumes you're using JWT auth
+  @UseGuards(AuthGuard('jwt'))
   @Post('create')
   async createProject(
     @Body() body: { name: string },
