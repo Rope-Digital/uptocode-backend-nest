@@ -27,7 +27,6 @@ export class ProjectService {
     }
     
     async createProject(userId: number, projectName: string) {
-    console.log('userId:', userId);
     const user = await this.userRepo.findOne({ where: { id: userId } });
     if (!user) throw new Error('User not found');
 

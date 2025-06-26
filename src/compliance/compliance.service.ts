@@ -10,7 +10,7 @@ export class ComplianceService {
     private complianceRepo: Repository<ComplianceRequest>,
   ) {}
 
-  async createComplianceRequest(body: any, files: any) {
+  async createComplianceRequest(body: any, files: any, userId: number) {
     const request = this.complianceRepo.create({
       address: body.address,
       councilName: body.councilName,

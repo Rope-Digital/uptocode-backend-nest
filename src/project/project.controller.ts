@@ -12,8 +12,8 @@ export class ProjectController {
     @Body() body: { name: string },
     @Req() req: any,
   ) {
-    const userId = req.user.userId; // Correct property
-    console.log('userId:', userId); // Debug
+    const userId = req.user.userId;
+    // console.log('userId:', userId);
     return this.projectService.createProject(userId, body.name);
   }
 
