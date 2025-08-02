@@ -1,6 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 import { Project } from '../project/project.entity';
 import { OneToMany } from 'typeorm/decorator/relations/OneToMany';
+import { ComplianceRequest } from '../compliance/compliance.entity';
 
 @Entity()
 export class User {
@@ -29,5 +30,9 @@ export class User {
 
     @OneToMany(() => Project, (project) => project.user)
     projects: Project[];
+
+    @OneToMany(() => ComplianceRequest, request => request.user)
+    complianceRequests: ComplianceRequest[];
+
 
 }

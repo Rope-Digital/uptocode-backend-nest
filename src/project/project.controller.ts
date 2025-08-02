@@ -4,7 +4,7 @@ import { AuthGuard } from '@nestjs/passport';
 
 @Controller('projects')
 export class ProjectController {
-  constructor(private readonly projectService: ProjectService) { }
+  constructor(private readonly projectService: ProjectService) {}
 
   @UseGuards(AuthGuard('jwt'))
   @Post('create')
@@ -12,10 +12,8 @@ export class ProjectController {
     @Body() body: { name: string },
     @Req() req: any,
   ) {
-    const userId = req.user.userId;
-    // console.log('userId:', userId);
+    const userId = req.user.id;
     return this.projectService.createProject(userId, body.name);
   }
-
-
 }
+

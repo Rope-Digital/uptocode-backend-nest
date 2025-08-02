@@ -3,12 +3,17 @@ import {
   PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
+  ManyToOne,
 } from 'typeorm';
+import { User } from '../users/user.entity';
 
 @Entity()
 export class ComplianceRequest {
   @PrimaryGeneratedColumn()
   id: number;
+
+  @ManyToOne(() => User, user => user.complianceRequests, { eager: true })
+  user: User;
 
   @Column()
   address: string;
@@ -18,6 +23,9 @@ export class ComplianceRequest {
 
   @Column({ default: false })
   belongsToCouncil: boolean;
+
+  @Column({ nullable: true })
+  projectPath: string; // helpful for audits and linking
 
   @Column({ nullable: true })
   sitePlanPath: string;
@@ -36,6 +44,15 @@ export class ComplianceRequest {
 
   @Column({ nullable: true })
   supportingDocsPath: string;
+
+  @Column({ nullable: true, type: 'text' })
+  auditResult: string;
+
+  @Column({ nullable: true, type: 'text' })
+  finalReportText: string;
+
+  @Column({ nullable: true })
+  downloadLink: string;
 
   @CreateDateColumn()
   createdAt: Date;

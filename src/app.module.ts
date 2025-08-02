@@ -7,6 +7,7 @@ import { AuthModule } from './auth/auth.module';
 import { User } from './users/user.entity';
 import { ComplianceModule } from './compliance/compliance.module';
 import { ProjectModule } from './project/project.module';
+import { ScraperModule } from './scraper/scraper.module';
 
 @Module({
   imports: [
@@ -19,13 +20,14 @@ import { ProjectModule } from './project/project.module';
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_NAME,
       autoLoadEntities: true,
-      synchronize: true, // ⚠️ Disable in production
+      synchronize: true,
     }),
     TypeOrmModule.forFeature([User]),
     UsersModule,
     AuthModule,
     ComplianceModule,
     ProjectModule,
+    ScraperModule,
   ],
   controllers: [AppController],
 })
