@@ -143,7 +143,8 @@ export class ScraperService {
   async scrapeDocuments() {
     this.logger.log('--- Starting Scraper Job ---');
     const limit = pLimit(this.CONCURRENCY);
-    const urls = generateCouncilUrls(this.councils, this.MAX_PAGES_PER_COUNCIL);
+    const SCRAPER_BASE_URL = 'https://planning-schemes.app.planning.vic.gov.au';
+    const urls = generateCouncilUrls(this.councils, this.MAX_PAGES_PER_COUNCIL, SCRAPER_BASE_URL);
 
     for (const url of urls) {
       const docLinks = await this.getDocumentLinks(url);
