@@ -8,7 +8,7 @@ export class ComplianceReportService {
   private readonly openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
   private loadPrompt(promptFile: string): string {
-    return readFileSync(join(__dirname, '../../data/prompt', promptFile), 'utf-8');
+    return readFileSync(join(process.cwd(), 'data/prompt', promptFile), 'utf-8');
   }
 
   private listFilesInDir(dirPath: string): string[] {
